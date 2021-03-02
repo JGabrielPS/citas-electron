@@ -2,6 +2,9 @@ const app = require("express")();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+app.use(cors());
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/veterinaria", {
