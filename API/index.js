@@ -4,6 +4,19 @@ const routes = require("./routes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const whiteList = ["http://localhost:3000"];
+const corsOptions = {
+  origin: (origin, callback) => {
+    const existe = whiteList.some((dominio) => dominio === origin);
+    if (existe) {
+      callback(null, true);
+    } else {
+      callback(new Error("No permitido por CORS"));
+    }
+  },
+};
+
+//app.use(cors(corsOptions));
 app.use(cors());
 
 mongoose.Promise = global.Promise;
