@@ -1,5 +1,7 @@
 const app = require("express")();
 const mongoose = require("mongoose");
+const routes = require("./routes");
+const bodyParser = require("body-parser");
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/veterinaria", {
@@ -7,6 +9,11 @@ mongoose.connect("mongodb://localhost/veterinaria", {
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/", routes());
 
 const port = process.env.PORT || 4000;
 
