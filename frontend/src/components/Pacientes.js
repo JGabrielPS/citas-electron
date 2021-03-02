@@ -1,0 +1,48 @@
+import React from "react";
+import Cita from "./Cita";
+
+const Pacientes = ({ citas }) => {
+  if (citas.length === 0) return null;
+
+  return (
+    <>
+      <h1 className="my-5">Administrador de Pacientes</h1>
+      <div className="mt-5 my-5">
+        <div className="row">
+          <div className="col-md-12 mb-5 d-flex justify-content-center">
+            <a
+              href="#"
+              className="btn btn-success text-uppercase py-2 px-5 font-weight-bold"
+            >
+              Crear Cita
+            </a>
+          </div>
+          <div className="col-md-8 mx-auto">
+            <div className="list-group">
+              {citas.map((cita) => (
+                <a
+                  key={cita._id}
+                  className="p-5 list-group-item list-group-item-action flex-column align-items-start"
+                >
+                  <div className="d-flex w-100 justify-content-between">
+                    <h3 className="mb-3">{cita.nombre}</h3>
+                    <small className="fecha-alta">
+                      {cita.fecha} - {cita.hora}
+                    </small>
+                    <p className="mb-0">{cita.sintomas}</p>
+                    <div className="contacto py-3">
+                      <p>Dueño: {cita.propietario}</p>
+                      <p>Teléfono: {cita.telefono}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Pacientes;
