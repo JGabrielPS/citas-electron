@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Cita from "./Cita";
 
 const Pacientes = ({ citas }) => {
@@ -7,24 +9,25 @@ const Pacientes = ({ citas }) => {
   return (
     <>
       <h1 className="my-5">Administrador de Pacientes</h1>
-      <div className="mt-5 my-5">
+      <div className="container mt-5 my-5">
         <div className="row">
           <div className="col-md-12 mb-5 d-flex justify-content-center">
-            <a
-              href="#"
+            <Link
+              to={"/nueva"}
               className="btn btn-success text-uppercase py-2 px-5 font-weight-bold"
             >
               Crear Cita
-            </a>
+            </Link>
           </div>
           <div className="col-md-8 mx-auto">
             <div className="list-group">
               {citas.map((cita) => (
-                <a
+                <Link
+                  to={`/cita/${cita._id}`}
                   key={cita._id}
                   className="p-5 list-group-item list-group-item-action flex-column align-items-start"
                 >
-                  <div className="d-flex w-100 justify-content-between">
+                  <div className="d-flex w-100 justify-content-between mb-4">
                     <h3 className="mb-3">{cita.nombre}</h3>
                     <small className="fecha-alta">
                       {cita.fecha} - {cita.hora}
@@ -35,7 +38,7 @@ const Pacientes = ({ citas }) => {
                       <p>Teléfono: {cita.telefono}</p>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
