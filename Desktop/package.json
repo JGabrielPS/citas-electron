@@ -1,0 +1,14 @@
+{
+  "name": "citas-electron-desktop",
+  "version": "1.0.0",
+  "description": "Aplicacion de escritorio con electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Pérez",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^12.0.0"
+  }
+}
